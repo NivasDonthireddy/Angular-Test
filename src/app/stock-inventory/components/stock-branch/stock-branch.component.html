@@ -1,0 +1,24 @@
+<div [formGroup]="parent">
+    <div formGroupName="store">
+        <input
+            class="input-box" 
+            type="text"
+            placeholder="Branch Id" 
+            formControlName="branch">
+            <span style="color:red" *ngIf="required('branch')">
+                This is required
+            </span>
+            <span style="color:red" *ngIf="invalidBranch('branch') && !required('branch')">
+                Branch is Invalid
+            </span>
+        <input 
+            class="input-box" 
+            type="text" 
+            placeholder="Manager Code" 
+            formControlName="code">
+            <span style="color:red" *ngIf="required('code')">
+                This is required
+            </span>
+    </div>
+    
+</div>

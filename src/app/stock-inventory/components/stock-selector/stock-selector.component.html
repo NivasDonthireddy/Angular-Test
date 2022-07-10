@@ -1,0 +1,15 @@
+<div [formGroup]="parent">
+    <div formGroupName="selector">
+        <mat-form-field appearance="outline" class="select-control">
+            <mat-label>Select Stock</mat-label>
+            <mat-select formControlName="product_id">
+                <mat-option *ngFor="let product of products" [value]="product.id">{{product.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <stock-counter formControlName="quantity"></stock-counter>
+        <button mat-raised-button type="button" (click)="onAdd()" [disabled]="stockExists|| notSelected">Add stock</button>
+        <div *ngIf="stockExists" style="color:red">
+            This stock already exists
+        </div>
+    </div>    
+</div>

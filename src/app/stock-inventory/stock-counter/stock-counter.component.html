@@ -1,0 +1,19 @@
+<div>
+    <div [class.focused]="focus">
+        <div
+            (keydown)="onKeyDown($event)"
+            (blur)="onBlur($event)"
+            (focus)="onFocus($event)"
+        >
+            <p>{{value}}</p>
+            <div>
+                <button mat-raised-button [disabled]="value===max" type="button" (click)="increment()">
+                    +
+                </button>
+                <button mat-raised-button [disabled]="value===min" type="button" (click)="decrement()">
+                    -
+                </button>
+            </div>
+        </div>
+    </div>    
+</div>

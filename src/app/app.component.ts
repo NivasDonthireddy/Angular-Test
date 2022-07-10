@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FileSizePipe } from './filesize.pipe';
 
 interface File {
@@ -14,13 +15,19 @@ interface File {
   providers: [FileSizePipe]
 })
 export class AppComponent implements OnInit {
-  constructor(private fileSizePipe:FileSizePipe){
-
+  constructor(
+    private fileSizePipe:FileSizePipe,
+    private router:Router
+    ){
   }
   title = 'angular-test';
   files?: File[];
   mappedFiles?: File[];
   ngOnInit() {
+    
+    this.router.events.subscribe(event => {
+      console.log(event);
+    })
 
     this.files = [
       { name: 'logo.svg', size: 2120109, type: 'image/svg' },
@@ -35,7 +42,5 @@ export class AppComponent implements OnInit {
         type: x.type
       }
     })
-    
-    console.log(this.mappedFiles);
   }
 }
